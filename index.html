@@ -19,28 +19,28 @@
 					<div>
 						<h4>Incandescent</h4>
 						<p>{{calc.inc_wattage}}</p><!--this is the wattage for our bulbs and will be calulated for us later-->
-						<p>13.14</p><!--displaying cost per wattage-->
+						<p>{{calc.inc_cost}}</p><!--displaying cost per wattage-->
 					</div>
 				</section><!--end of section for first light bulb-->
 				<section class="halo"><!--start of section for second type of light bulb-->
 					<div>
 						<h4>Halogen</h4>
 						<p>{{calc.halo_wattage}}</p>
-						<p>9.46</p>
+						<p>{{calc.halo_cost}}</p>
 					</div>
 				</section><!--end of section for second light bulb-->
 				<section class="cfl"><!--start of section for third type of light bulb-->
 					<div>
 						<h4>CFL</h4>
 						<p>{{calc.cfl_wattage}}</p>
-						<p>3.07</p>
+						<p>{{calc.cfl_cost}}</p>
 					</div>
 				</section><!--end of section for third light bulb-->
 				<section class="led"><!--start of section for fourth type of light bulb-->
 					<div>
 						<h4>LED</h4>
 						<p>{{calc.led_wattage}}</p>
-						<p>2.63</p>
+						<p>{{calc.led_cost}}</p>
 					</div>
 				</section><!--end of section for fourth light bulb-->
 			</main>
@@ -49,18 +49,18 @@
 					<h4>Lumens</h4>
 					<p>Brightness <br>of bulb</p>
 					<!-- creates an option element inside the select element for each item -->
-					<select ng-change="calc.calculate()"  ng-model="calc.current_lumens" ng-options="o as o for o in calc.lumen_options"> 
+					<select ng-change="calc.calculate()" ng-model="calc.current_lumens" ng-options="o as o for o in calc.lumen_options"> 
 					</select>
 				</div><!--end of div for luminousity-->
 				<div><!--start of div for units-->
 					<h4>KWh</h4>
 					<p>Kilowatt-<br>hour cost</p>
-					<input type="number" ng-model="calc.current_cost"> cents
+					<input type="number" ng-change="calc.calculate()" ng-model="calc.current_cost"> cents
 				</div><!--end of div for units-->
 				<div><!--start of div for daily consumption-->
 					<h4>Hours</h4>
 					<p>Usage <br>per day</p>
-					<input type="number" ng-model="calc.current_hours">
+					<input type="number" ng-change="calc.calculate()"  ng-model="calc.current_hours">
 				</div><!--end of div for daily consumption-->
 			</form><!--form end-->
 		</div>

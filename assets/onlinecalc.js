@@ -21,29 +21,23 @@ app.controller('CalculatorController',['$scope',function(){
     vm.halo_wattage = (vm.current_lumens * vm.halo_conversion).toFixed(1);
     vm.cfl_wattage = (vm.current_lumens * vm.cfl_conversion).toFixed(1);
     vm.led_wattage = (vm.current_lumens * vm.led_conversion).toFixed(1);
+
+  //calculations for the cost of running each bulb per year
+  //first we define a condition so that nobody can choose more than 24hrs in a day 
+    if(vm.current_hours > 24){vm.current_hours = 24; }
+    //calculation for total hours in a year
+    var total_hours = vm.total_days * vm.current_hours;
+    //calculation for cost in cents
+    var cost = vm.current_cost  / 100;
+    //calculation for total cost for the four bulbs setting results to 2 d.p
+    vm.inc_cost =  (((vm.inc_wattage * total_hours) / 1000) * cost).toFixed(2);
+    vm.halo_cost = (((vm.halo_wattage * total_hours) / 1000) * cost).toFixed(2);
+    vm.cfl_cost =  (((vm.cfl_wattage * total_hours) / 1000) * cost).toFixed(2);
+    vm.led_cost =  (((vm.led_wattage * total_hours) / 1000) * cost).toFixed(2);
   }
-  
   vm.calculate();
 
 }]);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 })();
