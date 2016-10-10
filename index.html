@@ -18,28 +18,28 @@
 				<section class="incand"><!--start of section for first type of light bulb-->
 					<div>
 						<h4>Incandescent</h4>
-						<p>100.0</p><!--this is the wattage for our bulbs and will be calulated for us later-->
+						<p>{{calc.inc_wattage}}</p><!--this is the wattage for our bulbs and will be calulated for us later-->
 						<p>13.14</p><!--displaying cost per wattage-->
 					</div>
 				</section><!--end of section for first light bulb-->
 				<section class="halo"><!--start of section for second type of light bulb-->
 					<div>
 						<h4>Halogen</h4>
-						<p>72.0</p>
+						<p>{{calc.halo_wattage}}</p>
 						<p>9.46</p>
 					</div>
 				</section><!--end of section for second light bulb-->
 				<section class="cfl"><!--start of section for third type of light bulb-->
 					<div>
 						<h4>CFL</h4>
-						<p>23.4</p>
+						<p>{{calc.cfl_wattage}}</p>
 						<p>3.07</p>
 					</div>
 				</section><!--end of section for third light bulb-->
 				<section class="led"><!--start of section for fourth type of light bulb-->
 					<div>
 						<h4>LED</h4>
-						<p>20.0</p>
+						<p>{{calc.led_wattage}}</p>
 						<p>2.63</p>
 					</div>
 				</section><!--end of section for fourth light bulb-->
@@ -49,7 +49,7 @@
 					<h4>Lumens</h4>
 					<p>Brightness <br>of bulb</p>
 					<!-- creates an option element inside the select element for each item -->
-					<select ng-model="calc.current_lumens" ng-options="o as o for o in calc.lumen_options"> 
+					<select ng-change="calc.calculate()"  ng-model="calc.current_lumens" ng-options="o as o for o in calc.lumen_options"> 
 					</select>
 				</div><!--end of div for luminousity-->
 				<div><!--start of div for units-->
