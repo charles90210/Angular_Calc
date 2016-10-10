@@ -1,0 +1,170 @@
+/*Google fonts import*/
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:300,700|Open+Sans+Condensed:700);
+
+/*  =====================STYLING FOR MAIN AREA OF PAGE================= */
+#myCalc { 
+  margin: 0; 
+  padding: 0; 
+  font-size: 16px; 
+  font-family: 'Open Sans', sans-serif; 
+  font-weight: 300; 
+  line-height: 24px; 
+  max-width: 800px; 
+}
+
+#myCalc main {
+  background-color: #444; /* medium grey */
+}
+
+#myCalc section {
+  width: 25%;
+  float: left; /* wrap the text around images on our page */
+  text-align: center;
+  padding-top: 110px; /* sets top padding space. we set this with room to show bulb graphics */
+  color: #fff; /* white */
+  background-repeat: no-repeat; 
+  background-position: center 5px;
+  background-size: 63px 100px; /* proportionate size for each of the light bulbs */
+}
+
+/* This clears the floats in the main section since we have section elements inside the main element */
+#myCalc main::after { 
+   content:'';  
+   display: block; 
+   clear: both}
+/* INCANDESCENT BULB */
+#myCalc main section.incand {
+  background-color: #ba2d2d; /* red */
+  background-image: url(images/bulb_inc.svg);
+}
+/* HALOGEN BULB */
+#myCalc main section.halo {
+  background-color: #de6615; /* orange */
+  background-image: url(images/bulb_hal.svg);
+}
+/* CFL BULB */
+#myCalc main section.cfl {
+  background-color: #efc20f; /* gold */
+  background-image: url(images/bulb_cfl.svg);
+}
+/* LED BULB */
+#myCalc main section.led {
+  background-color: #36b23c; /* green */
+  background-image: url(images/bulb_led.svg);
+}
+ /* the > means we target divs that are the direct descendants of the section elements so if we had more than one div inside the section, our styling would only apply to the main div */
+#myCalc main section > div {
+  padding: 5px /* top and bottom */ 0/*left and right*/;
+  background-color: rgba(0, 0, 0, 0.15); /* 0.15 opacity gives us 85% transparency with red green and blue to get black */
+}
+
+#myCalc main h4 {
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-size: 12.8px; /* or 0.8em | 1em = 16px = 12pt = 100% */
+  letter-spacing: 1px;
+  margin: 0 0 5px 0; /* top, right, bottom, left */
+  text-transform: uppercase;
+}
+
+#myCalc main p {
+  margin: 0;
+  font-size: 24px; /* 24px = 1.5em*/
+  font-weight: 700;
+}
+  /* p + p this targets the paragraph elemt only if it immediately follows another paragraph element */
+#myCalc main p + p {
+  font-size: 16px;
+  font-weight: 300;
+}
+
+/* Adding labels to numbers in section elements using CSS-Pseudo Elements */
+#myCalc main p::after { content: 'w';} /* adds w after every paragraph element inside the main element */
+
+#myCalc main p + p::before { content: '$';}
+
+#myCalc main p + p::after { 
+  content: '/year'; 
+  color: rgba(255, 255, 255, 0.5); /* semi transparent white */
+  padding-left: 4px;
+} 
+
+/*  =====================STYLING FOR FORM AREA OF PAGE================= */
+#myCalc form {
+  background-color: #000; /* black */
+  margin: 0; 
+  padding: 10px 0px; /* top and bottom;right and left */
+}
+
+#myCalc form br { display: none; }
+
+#myCalc form > div { 
+  color: #fff;
+  width: 33%;
+  float: left;
+  text-align: center; 
+  padding: 10px 0 5px 0; /* top, right, bottom, left */
+}
+/* Clears the float inside the form element */
+#myCalc form::after { content:''; display: block; clear: both; }
+
+#myCalc form h4 {
+  color: #aaa /* light grey */
+  margin: 0 0 -5px 0; /* top right bottom left */
+  font-size: 24px; /*  1.5em = 24px @ 1em = 16px */
+  font-weight: 300; 
+}
+
+#myCalc form p {
+  color: #888; /* dark grey */
+  margin: 0 0 6px 0;
+  font-size: 14.4px; /* 0.9em = 14.4px @ 1em = 16px */
+}
+
+#myCalc form input[type=number] {
+  width: 50px;
+  text-align: left;
+  font-size: 16px;  /* 1em = 16px */
+}
+ /* we need to overide default broswer styles using appearance and we use the browser prefixes here bcos most browsers dont support this natively yet */
+#myCalc form select {
+  font-size: 16px;
+  -webkit-appearance: none;  /* Targets chrome and safari browsers */
+  -moz-appearance: none; /* Targets mozilla firefox browser */
+  -ms-appearance: none; /* Targets internet explorer browser */
+  -o-appearance: none; /* Targets opera browser */
+  appearance: none; /* sets our default value for appearance */
+  background-color: #fff url(images/icons_arrows.svg) no-repeat right 6px; /* x-position y-position */
+  background-size: 30px 20px; /* width and height */
+  padding: 3px 30px 3px 5px; /* top right bottom left */
+}
+
+/* additional rule for internet explorer. */
+#myCalc form select::-ms-expand { display: none; }
+
+
+/*  =====================MAIN AREA STYLING FOR SMALLER SCREEN SIZES================= */
+
+/* adding a media query */
+@media screen and (max-width:500px){
+  #myCalc { font-size: 15px; }
+  #myCalc main section { background-size: 45px 71px; padding-top: 80px;} /* lightbulb container */
+  #myCalc main h4 { margin: 0; font-size: 12px; letter-spacing: 0;}
+  #myCalc main p { font-size: 17.6px; } /* wattage label */
+  #myCalc main p + p { font-size: 16px; } /* price paragraph */
+  #myCalc main p + p::after { display: block; margin-top: -10px; color: #fff;}
+/*  ====================FORM STYLING FOR SMALLER SCREEN SIZES================= */
+  #myCalc form h4 {font-size: 17.6px; margin: 0; }
+  #myCalc form p { font-size: 12.8px; line-height: 14px; }
+  #myCalc form br { display: inline; }
+  #myCalc form input[type=number] {width: 30px; font-size: 12.8px; }
+  #myCalc form select { font-size: 12.8px;}
+}
+
+
+
+
+
+
+
+
+
